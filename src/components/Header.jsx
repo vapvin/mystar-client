@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 function Header({location: {pathname}}){
-    const userAuth = true;
+    const userData = useSelector(state => state);
     if(pathname === "/join" || pathname === "/login"){
         return null
     } else {
@@ -32,7 +33,7 @@ function Header({location: {pathname}}){
                         </div>
                     </div>
                     <div className="member">
-                        {userAuth ? (
+                        {userData.login ? (
                             <>
                             <img src="image/user.png" />
                             <div className="username">Username

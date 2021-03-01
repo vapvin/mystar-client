@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {registerUser} from '../utils/Auth/auth';
 
-function Join(){
+function Join({history}){
 
     const [regist, setRegist] = useState({
         username: "",
@@ -15,16 +15,12 @@ function Join(){
 
     const dispatch = useDispatch()
 
-    const userData = useSelector(state => state);
-    console.log(userData);
-
     const getInputData = e => {
         const {value, name} = e.target;
         setRegist({
             ...regist, 
             [name]: value
         })
-        console.log(regist);
     }
 
     const joinReq = e => {
@@ -32,7 +28,15 @@ function Join(){
         if(regist.password1 !== regist.password2){
             setError("비밀번호가 틀립니다.")
         } else {
-            dispatch(registerUser(regist));
+            dispatch(registerUser(regist))
+            .then(res => {
+                if(res.payload.key !== ""){
+                    history.push("/")
+                } else {
+                    setError("가입에 실패하셨습니다.")
+                }
+            });
+            
         }
     }
     

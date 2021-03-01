@@ -1,5 +1,18 @@
-import React from 'react';
-function Home() {
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
+
+
+function Home({history}) {
+
+  const userData = useSelector(state => state);
+  console.log(userData);
+  useEffect(() => {
+    if(!userData.login){
+      history.push("/login")
+    }
+  }, [])
+
+  
   return (
     <div className="content">
             <div className="pass_change_wrap content_box">
@@ -26,51 +39,51 @@ function Home() {
                 <div className="image_graph">
                     <ul>
                         <li>
-                            <div className="graph_bar"><span style={{"height":" 50%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height":" 50%"}}></span></div>
                             <p>1</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "20%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "20%"}}></span></div>
                             <p>2</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "5%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "5%"}}></span></div>
                             <p>3</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "71%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "71%"}}></span></div>
                             <p>4</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "55%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "55%"}}></span></div>
                             <p>5</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "70%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "70%"}}></span></div>
                             <p>6</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "40%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "40%"}}></span></div>
                             <p>7</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "80%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "80%"}}></span></div>
                             <p>8</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "20%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "20%"}}></span></div>
                             <p>9</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "10%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "10%"}}></span></div>
                             <p>10</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "52%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "52%"}}></span></div>
                             <p>11</p>
                         </li>
                         <li>
-                            <div className="graph_bar"><span style={{"height": "43%;"}}></span></div>
+                            <div className="graph_bar"><span style={{"height": "43%"}}></span></div>
                             <p>12</p>
                         </li>
                     </ul>
@@ -88,7 +101,7 @@ function Home() {
                 <p className="content_title">이미지수정 및 삭제</p>
                 <div className="image_edit_bt_img">
                     <a href="image_edit.html">
-                        <svg version="1.1" fill="#fff" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style={{"enable-background":"new 0 0 512 512;"}} xmlSpace="preserve">
+                        <svg version="1.1" fill="#fff" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style={{"enableBackground":"new 0 0 512 512"}} xmlSpace="preserve">
                         <g>
                             <g>
                                 <path d="M502,98c5.523,0,10-4.477,10-10V40c0-5.523-4.477-10-10-10h-48c-5.523,0-10,4.477-10,10v14H174.826

@@ -6,7 +6,6 @@ const LOGOUT_USER = "AUTH/LOGOUT_USER";
 
 export const registerUser = (registData) => {
     const data = request("post", "api/rest-auth/registration/", registData);
-    console.log(data);
     return {
         type: REGISTER_USER,
         payload: data,
@@ -36,11 +35,11 @@ const initialState = {
 export default function authenticated(state = initialState, action){
     switch(action.type){
         case REGISTER_USER:
-            return {...state, key: action.payload.key, message:"회원가입 성공"}
+            return {...state, payload: action.payload, key: action.payload.key, message:"회원가입 성공"}
         case LOGIN_USER:
-            return {...state, login: true, key: action.payload.key, message:"로그인 성공"}
+            return {...state, login: true, payload: action.payload, key: action.payload.key, message:"로그인 성공"}
         case LOGOUT_USER:
-            return {...state, login: false, key: null, message: action.payload.detail}
+            return {...state, login: false, payload: action.payload, key: null, message: action.payload.detail}
         default:
             return state;
     }
