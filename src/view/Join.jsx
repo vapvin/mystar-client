@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {registerUser} from '../utils/Auth/auth';
+import {Link} from 'react-router-dom'
 
 function Join({history}){
 
@@ -30,8 +31,10 @@ function Join({history}){
         } else {
             dispatch(registerUser(regist))
             .then(res => {
+                console.log(res)
                 if(res.payload.key !== ""){
-                    history.push("/")
+                    alert("회원가입이 완료되었습니다.");
+                    history.push("/");
                 } else {
                     setError("가입에 실패하셨습니다.")
                 }
@@ -48,7 +51,7 @@ function Join({history}){
                 <legend>Register</legend>
                 <div className="register">
                     <div className="register_img">
-                        <img src="image/padlock.png"/>
+                        <img src="/static/image/padlock.png"/>
                     </div>
                     <ul>
                         <li>아이디<input name="username" onChange={getInputData} type="text" placeholder="Enter username"/></li>
@@ -58,7 +61,7 @@ function Join({history}){
                     </ul>
                     {error ? error : null}
                     <ul className="register_bt">
-                        <li><button>가입하기</button></li>
+                        <li><button className="auth-btn">가입하기</button></li>
                     </ul>
                 </div>
             </fieldset>

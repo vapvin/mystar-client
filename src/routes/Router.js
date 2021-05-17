@@ -7,7 +7,7 @@ import ImageUpload from '../view/ImageUpload';
 import ImageEdit from '../view/ImageEdit';
 import Header from '../components/Header';
 const Routers = () => (
-    <Router>
+    <Router basename={"/"}>
         <Header />
         <Switch>
             <Route path="/" exact component={Home} />

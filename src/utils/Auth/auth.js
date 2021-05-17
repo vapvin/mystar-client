@@ -5,7 +5,7 @@ const LOGIN_USER = "AUTH/LOGIN_USER";
 const LOGOUT_USER = "AUTH/LOGOUT_USER";
 
 export const registerUser = (registData) => {
-    const data = request("post", "api/rest-auth/registration/", registData);
+    const data = request("post", "api/rest-auth/registration/", registData,null);
     return {
         type: REGISTER_USER,
         payload: data,
@@ -13,7 +13,7 @@ export const registerUser = (registData) => {
 }
 
 export const loginUser = (loginData) => {
-    const data = request("post", "api/rest-auth/login/", loginData);
+    const data = request("post", "api/v1/auth/log-in/", loginData, null);
     return {
         type: LOGIN_USER,
         payload: data,
@@ -21,7 +21,7 @@ export const loginUser = (loginData) => {
 }
 
 export const logoutUser = () => {
-    const data = request("post", "api/rest-auth/logout/", null);
+    const data = request("post", "api/rest-auth/logout/", null, null);
     return {
         type: LOGOUT_USER,
         payload: data,
@@ -30,6 +30,7 @@ export const logoutUser = () => {
 const initialState = {
     login: false,
     key: null,
+    id: null,
     message: ""
 }
 export default function authenticated(state = initialState, action){
@@ -37,7 +38,7 @@ export default function authenticated(state = initialState, action){
         case REGISTER_USER:
             return {...state, payload: action.payload, key: action.payload.key, message:"회원가입 성공"}
         case LOGIN_USER:
-            return {...state, login: true, payload: action.payload, key: action.payload.key, message:"로그인 성공"}
+            return {...state, login: true, payload: action.payload, key: action.payload.token, id: action.payload.id, message:"로그인 성공"}
         case LOGOUT_USER:
             return {...state, login: false, payload: action.payload, key: null, message: action.payload.detail}
         default:
